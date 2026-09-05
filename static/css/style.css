@@ -8,22 +8,22 @@
 :root {
     --ink: #393D3F;
     --paper: #FDFDFF;
-    --accent: #62929E;
     --accent-dark: #546A7B;
+    --accent: #62929E;
     --line: #e3d9c9;
-    --text-muted: #C6C5B9;
+    --text-muted: #a3a295;
     --radius: 4px;
 }
 
 body {
-    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, "Andale Mono", Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
     background-color: var(--paper);
     line-height: 1.6;
 }
 
 h1, .brand {
-    font-family: "Space Grotesk", -apple-system, sans-serif;
+    font-family: "Canela Deck", -apple-system, sans-serif;
 }
 
 .container {
@@ -35,6 +35,7 @@ h1, .brand {
 /* Header with Flexbox */
 .site-header {
     border-bottom: 1px solid var(--line);
+    background-color: var(--line);
 }
 
 .site-header .container {
@@ -88,7 +89,7 @@ h1, .brand {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent-dark);
+    color: var(--accent);
     font-weight: 700;
     margin-bottom: 0.75rem;
 }
@@ -122,6 +123,28 @@ h1, .brand {
     font-weight: 600;
 }
 
+.skills p {
+    color: var(--accent-dark);
+    font-size: large;
+}
+
+.skills ul {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+    line-height: 1.7rem;
+}
+
+.experience p {
+    color: var(--accent-dark);
+    font-size: large;
+}
+
+.experience ul {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+    line-height: 1.7rem;
+}
+
 .social-links {
     display: flex;
     gap: 0.5rem;
@@ -141,7 +164,7 @@ h1, .brand {
 }
 
 .social-link:hover {
-    background-color: var(--accent);
+    background-color: var(--accent-dark);
 }
 
 .hero-photo {
@@ -156,7 +179,7 @@ h1, .brand {
     left: 1.25rem;
     width: 100%;
     height: 100%;
-    background-color: var(--accent);
+    background-color: var(--accent-dark);
     border-radius: var(--radius);
     z-index: 0;
 }
@@ -177,7 +200,7 @@ h1, .brand {
     padding: 1.5rem;
     color: var(--text-muted);
     font-size: 0.85rem;
-    border-top: 1px solid var(--line);
+    background-color: var(--line);
 }
 
 @media (max-width: 600px) {
