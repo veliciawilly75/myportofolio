@@ -12,7 +12,7 @@ Perubahan
 4. Menambahkan kredensial database di berkas .env.prod
 
 Pertanyaan Reflektif
-1. Selain yang sudah ada di template yang diberikan asdos di tutorial 01, saya menggunakan elemen <ul> dan <li> untuk membuat bullet list pada section skills dan experience. Elemen tersebut membuat tampilan daftar skill dan experience saya terlihat lebih rapi dan mudah dibaca.
+1. Selain yang sudah ada di template yang diberikan asdos di tutorial 01, saya menggunakan elemen ul dan li untuk membuat bullet list pada section skills dan experience. Elemen tersebut membuat tampilan daftar skill dan experience saya terlihat lebih rapi dan mudah dibaca.
 
 2. Tantangan tata letak yang saya temukan adalah menentukan letak yang pas bagi masing-masing section. Setelah menambahkan section-section baru (skills, experience, projects) di section hero-details, layout dari website menjadi tidak seimbang. Kolom sebelah kiri jadi memiliki lebih banyak konten daripada kolom sebelah kanan yang hanya berisi foto. Akhirnya, saya melakukan penyesuaian tata letak. Dalam proses penyesuaian, saya memindahkan beberapa elemen ke section lain dan membuat section baru. Saya juga mengubah grid-template-areas pada file css agar dapat menyusun section-section yang ada sesuai keinginan saya. Selain itu, ketika website dibuka dengan tampilan mobile, pengaturan tata letak yang sudah rapi di tampilan desktop jadi berantakan. Misalnya, margin yang membuat section skills memiliki jarak yang cukup dari foto pada tampilan desktop, mengakibatkan adanya jarak yang besar antara section skills dan section lainnya pada tampilan mobile sehingga harus di-override.
 
