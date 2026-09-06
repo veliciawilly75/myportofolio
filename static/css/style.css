@@ -73,7 +73,8 @@ h1, .brand {
     grid-template-columns: 1.3fr 1fr;
     grid-template-areas:
         "identity photo"
-        "details  photo";
+        "info photo"
+        "details  skills";
     gap: 1.5rem 3rem;
 }
 
@@ -81,8 +82,18 @@ h1, .brand {
     grid-area: identity;
 }
 
+.hero-info {
+    grid-area: info;
+}
+
 .hero-details {
     grid-area: details;
+    margin-top: 2rem;
+}
+
+.hero-skills {
+    grid-area: skills;
+    margin-top: 2rem;
 }
 
 .hero-kicker {
@@ -100,6 +111,7 @@ h1, .brand {
 }
 
 .bio {
+    margin-top: 3rem;
     color: var(--text-muted);
     max-width: 480px;
     margin-bottom: 1.5rem;
@@ -129,7 +141,6 @@ h1, .brand {
 }
 
 .skills ul {
-    margin-bottom: 1.5rem;
     margin-left: 2rem;
     line-height: 1.7rem;
 }
@@ -143,6 +154,18 @@ h1, .brand {
     margin-bottom: 1.5rem;
     margin-left: 2rem;
     line-height: 1.7rem;
+}
+
+.projects-title {
+    color: var(--accent-dark);
+    font-size: large;
+}
+
+.projects-desc {
+    color: var(--text-muted);
+    font-size: small;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .social-links {
@@ -209,11 +232,17 @@ h1, .brand {
         grid-template-areas:
             "identity"
             "photo"
+            "info"
+            "skills"
             "details";
     }
 
     .hero-photo {
         max-width: 220px;
+    }
+
+    .hero-details {
+        margin-top: 0rem;
     }
 
     .social-links {
