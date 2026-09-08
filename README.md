@@ -31,4 +31,4 @@ Resources yang saya gunakan untuk tugas ini:
 
 ### Tutorial 02
 Perubahan yang saya buat (selain yang diinstruksikan):
-1. Menghapus section experience dari halaman profil dengan menghapus section tersebut dari index.html da style.css.
+1. Menghapus section experience dari halaman profil dengan menghapus section tersebut dari index.html dan style.css.
