@@ -28,3 +28,7 @@ Resources yang saya gunakan untuk tugas ini:
 1. coolors.co -> untuk mencari color palette yang sesuai keinginan saya. Saya menggunakan color palette yang sudah ada, bukan yang di-generate oleh fitur AI pada website tersebut. Color palette yang saya gunakan: https://coolors.co/palette/393d3f-fdfdff-c6c5b9-62929e-546a7b
 2. Aplikasi Font Book di Mac -> untuk mencari font yang sesuai keinginan saya.
 ###
+
+### Tutorial 02
+Perubahan yang saya buat (selain yang diinstruksikan):
+1. Menghapus section experience dari halaman profil dengan menghapus section tersebut dari index.html da style.css.
