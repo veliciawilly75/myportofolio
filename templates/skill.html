@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ name }} - Experience</title>
+    <title>{{ name }} - Skill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -23,30 +23,37 @@
     </header>
 
     <main>
-        <section class="experience-section" id="experience">
+        <section class="skill-section" id="skill">
             <div class="container">
-                <p class="section-kicker">My experiences so far</p>
-                <h1>Experience</h1>
+                <p class="skill-kicker">My skills</p>
+                <h1>Skill</h1>
 
-                <div class="experience-grid">
-                    {% for experience in experience_list %}
-                        <article class="experience-card">
-                            <span class="experience-category">
-                                {{ experience.get_category_display }}
-                            </span>
-                            <h2>{{ experience.title }}</h2>
-                            <p class="experience-description">
-                                {{ experience.description }}
-                            </p>
-
-                            {% if experience.is_ongoing %}
-                                <p class="experience-status">Ongoing</p>
+                <div class="skill-grid">
+                    {% for skill in skill_list %}
+                        <article class="skill-card">
+                            {% if skill.highlight %}
+                                <span class="skill-level-highlight">
+                                    {{ skill.get_level_display }}
+                                </span>
+                            {% elif skill.prioritize %}
+                                <span class="skill-level-prioritize">
+                                    {{ skill.get_level_display }}
+                                </span>
                             {% else %}
-                                <p class="experience-status-ended">Ended</p>
+                                <span class="skill-level">
+                                    {{ skill.get_level_display }}
+                                </span>
+                            {% endif %}
+                            <h2>{{ skill.title }}</h2>
+                            {% if skill.certif_available %}
+                                <p class="skill-certif">{{ skill.certification }}</p>
+                            {% else %}
+                                <p class="skill-certif">Certification unavailable</p>
                             {% endif %}
                         </article>
+
                     {% empty %}
-                        <p class="empty-state">
+                        <p class="empty-skill-state">
                             Currently none
                         </p>
                     {% endfor %}

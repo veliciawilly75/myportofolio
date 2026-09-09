@@ -12,6 +12,8 @@
     --accent: #62929E;
     --line: #e3d9c9;
     --text-muted: #a3a295;
+    --highlight:brown;
+    --second-highlight:chocolate;
     --radius: 4px;
 }
 
@@ -39,7 +41,8 @@ h1, .brand {
 }
 
 .site-header .container {
-    display: flex;
+    display: grid;
+    grid-template-areas: "brand href";
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 1.5rem;
@@ -53,8 +56,13 @@ h1, .brand {
 }
 
 .site-header nav {
+    grid-area: href;
     display: flex;
     gap: 2rem;
+}
+
+.site-header brand {
+    grid-area: brand;
 }
 
 .site-header nav a {
@@ -73,8 +81,7 @@ h1, .brand {
     grid-template-columns: 1.3fr 1fr;
     grid-template-areas:
         "identity photo"
-        "info photo"
-        "details  skills";
+        "info photo";
     gap: 1.5rem 3rem;
 }
 
@@ -84,16 +91,6 @@ h1, .brand {
 
 .hero-info {
     grid-area: info;
-}
-
-.hero-details {
-    grid-area: details;
-    margin-top: 2rem;
-}
-
-.hero-skills {
-    grid-area: skills;
-    margin-top: 2rem;
 }
 
 .hero-kicker {
@@ -133,28 +130,6 @@ h1, .brand {
 
 .meta-row dd {
     font-weight: 600;
-}
-
-.skills p {
-    color: var(--accent-dark);
-    font-size: large;
-}
-
-.skills ul {
-    margin-left: 2rem;
-    line-height: 1.7rem;
-}
-
-.projects-title {
-    color: var(--accent-dark);
-    font-size: large;
-}
-
-.projects-desc {
-    color: var(--text-muted);
-    font-size: small;
-    margin-left: 1rem;
-    margin-bottom: 1.5rem;
 }
 
 .social-links {
@@ -221,17 +196,20 @@ h1, .brand {
         grid-template-areas:
             "identity"
             "photo"
-            "info"
-            "skills"
-            "details";
+            "info";
+    }
+
+    .site-header .container {
+        grid-template-areas:
+            "brand"
+            "href";
+    }
+    .site-header nav {
+        margin-top: 1rem;
     }
 
     .hero-photo {
         max-width: 220px;
-    }
-
-    .hero-details {
-        margin-top: 0rem;
     }
 
     .social-links {
@@ -292,4 +270,138 @@ h1, .brand {
     margin-top: 1rem;
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+.experience-status-ended {
+    color: var(--highlight);
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Untuk file skill.html */
+.skill-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.skill-kicker {
+    color: var(--accent-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.skill-section h1 {
+    margin: 0.4rem 0 1.5rem;
+    font-size: 2rem;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.skill-card {
+    padding: 1.25rem;
+    background-color: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.skill-level {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.skill-level-prioritize {
+    color:var(--second-highlight);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.skill-level-highlight {
+    color:var(--highlight);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.skill-card h2 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.empty-skill-state {
+    color: var(--text-muted);
+}
+
+.skill-certif {
+    color: var(--text-muted);   
+
+}
+
+/* Untuk file projects.html */
+.projects-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.projects-kicker {
+    color: var(--accent-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.projects-section h1 {
+    margin: 0.4rem 0 1.5rem;
+    font-size: 2rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.projects-card {
+    padding: 1.25rem;
+    background-color: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.projects-card h2 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.projects-type-solo {
+    color: var(--highlight);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.projects-type-team {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.projects-link {
+    color:var(--second-highlight);
+}
+
+.projects-desc,
+.empty-projects-state {
+    color: var(--text-muted);
 }
