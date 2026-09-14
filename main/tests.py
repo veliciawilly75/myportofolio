@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
 
-from main.models import Experience, Skill
+from main.models import Experience, Skill, Projects
 
 
 class MainTest(TestCase):
@@ -17,6 +17,13 @@ class MainTest(TestCase):
         self.skill = Skill.objects.create(
             title="Coding in C",
             level="beginner",
+        )
+        # Initiate projects object
+        self.project = Projects.objects.create(
+            title="Portofolio Website",
+            description="Making a portofolio website.",
+            status="ongoing",
+            type="solo",
         )
 
     # Test main page
@@ -106,3 +113,32 @@ class MainTest(TestCase):
         response = self.client.get(reverse("main:show_skill"))
         
         self.assertContains(response, "Certification unavailable")
+
+    # Test projects model and page
+    def test_projects_model(self):
+        self.assertEqual(str(self.project), "Portofolio Website")
+        self.assertEqual(self.project.description, "Making a portofolio website.")
+        self.assertEqual(self.project.status, "ongoing")
+        self.assertTrue(self.project.is_solo)
+
+    def test_projects_page(self):
+        response = self.client.get(reverse("main:show_projects"))
+    
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "projects.html")
+        self.assertContains(response, self.project.title)
+        self.assertContains(response, "Solo")
+        self.assertContains(response, "Ongoing")
+        self.assertContains(response, f'href="{reverse("main:show_main")}"')
+
+    def test_empty_projects_page(self):
+        Projects.objects.all().delete()
+        response = self.client.get(reverse("main:show_projects"))
+    
+        self.assertContains(response, "Currently none")
+
+    def test_team_project(self):
+        self.project.type = 'team'
+        self.project.save()
+
+        self.assertFalse(self.project.is_solo)

@@ -7,9 +7,9 @@ def show_main(request):
     context = {
         "name": "Velicia Willy",
         "npm": "2506657384",
-        "study_program": "Computer Science",
+        "study_program": "Bachelor's Degree in Computer Science",
         "bio": (
-            "CS Student at Universitas Indonesia trying to earn money by"
+            "CS Student at Universitas Indonesia trying to earn money by "
             "becoming a teaching assistant."
         ),
     }
