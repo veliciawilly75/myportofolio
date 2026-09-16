@@ -49,3 +49,9 @@ Saya tidak menggunakan AI untuk tugas ini. Saya tidak menemukan banyak masalah s
 Resources yang saya gunakan untuk tugas ini:
 1. Halaman tutorial 2 pada website PBP untuk referensi materi.
 ###
+
+### Tutorial 3
+Perubahan:
+1. Implementasi skeleton untuk index.html, projects.html, experience.html, skill.html, dan file .html lain yang dibuat pada tutorial ini.
+2. Implementasi form untuk model Projects, Skill, dan Experience.
+3. Implementasi data delivery dengan JSON untuk model Projects saja.
