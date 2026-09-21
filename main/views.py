@@ -15,6 +15,26 @@ def get_projects_json(request):
     projects_json = serializers.serialize("json", projects)
     return HttpResponse(projects_json, content_type="application/json")
 
+def get_skills_json(request):
+    title_query = request.GET.get("title", "").strip()
+    skills = Skill.objects.all()
+
+    if title_query:
+        skills = skills.filter(title__icontains=title_query)
+
+    skills_json = serializers.serialize("json", skills)
+    return HttpResponse(skills_json, content_type="application/json")
+
+def get_experiences_json(request):
+    title_query = request.GET.get("title", "").strip()
+    experiences = Experience.objects.all()
+
+    if title_query:
+        experiences = experiences.filter(title__icontains=title_query)
+
+    experiences_json = serializers.serialize("json", experiences)
+    return HttpResponse(experiences_json, content_type="application/json")
+
 def create_experience(request):
     form = ExperienceForm(request.POST or None)
 
@@ -71,16 +91,36 @@ def show_main(request):
 
 
 def show_experience(request):
+    json_response = get_experiences_json(request)
+
+    experiences = serializers.deserialize(
+        "json",
+        json_response.content.decode("utf-8"),
+    )
+    experiences = [experience.object for experience in experiences]
+    title_query = request.GET.get("title", "").strip()
+
     context = {
         "name": "Velicia Willy",
-        "experience_list": Experience.objects.all(),
+        "experience_list": experiences,
+        "title_query": title_query,
     }
     return render(request, "experience.html", context)
 
 def show_skill(request):
+    json_response = get_skills_json(request)
+
+    skills = serializers.deserialize(
+        "json",
+        json_response.content.decode("utf-8"),
+    )
+    skills = [skill.object for skill in skills]
+    title_query = request.GET.get("title", "").strip()
+
     context = {
         "name": "Velicia Willy",
-        "skill_list": Skill.objects.all(),
+        "skill_list": skills,
+        "title_query": title_query,
     }
     return render(request, "skill.html", context)
 
@@ -101,6 +141,26 @@ def show_projects(request):
     }
     return render(request, "projects.html", context)
 
+def delete_experience(request, experience_id):
+    experience = get_object_or_404(Experience, pk=experience_id)
+
+    if request.method == "POST":
+        experience.delete()
+        messages.success(request, "Experience successfully deleted!")
+        return redirect("main:show_experience")
+
+    return redirect("main:show_skill")
+
+def delete_skill(request, skill_id):
+    skill = get_object_or_404(Skill, pk=skill_id)
+
+    if request.method == "POST":
+        skill.delete()
+        messages.success(request, "Skill successfully deleted!")
+        return redirect("main:show_skill")
+
+    return redirect("main:show_skill")
+
 def delete_project(request, project_id):
     project = get_object_or_404(Projects, pk=project_id)
 
@@ -110,3 +170,51 @@ def delete_project(request, project_id):
         return redirect("main:show_projects")
 
     return redirect("main:show_projects")
+
+def update_project(request, project_id):
+    project = get_object_or_404(Projects, id=project_id)
+    form = ProjectForm(request.POST or None, instance=project)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Project successfully updated!")
+        return redirect("main:show_projects")
+    
+    context = {
+        "name": "Velicia Willy",
+        "form": form,
+        "project": project,
+    }
+    return render(request, "components/project_update.html", context)
+
+def update_skill(request, skill_id):
+    skill = get_object_or_404(Skill, id=skill_id)
+    form = SkillForm(request.POST or None, instance=skill)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Skill successfully updated!")
+        return redirect("main:show_skill")
+    
+    context = {
+        "name": "Velicia Willy",
+        "form": form,
+        "skill": skill,
+    }
+    return render(request, "components/skill_update.html", context)
+
+def update_experience(request, experience_id):
+    experience = get_object_or_404(Experience, id=experience_id)
+    form = ExperienceForm(request.POST or None, instance=experience)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Experience successfully updated!")
+        return redirect("main:show_experience")
+    
+    context = {
+        "name": "Velicia Willy",
+        "form": form,
+        "experience": experience,
+    }
+    return render(request, "components/experience_update.html", context)

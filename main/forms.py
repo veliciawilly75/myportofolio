@@ -89,6 +89,7 @@ class SkillForm(ModelForm):
 class ProjectForm(ModelForm):
     class Meta:
         model = Projects
+
         fields = [
             "title",
             "description",

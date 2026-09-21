@@ -8,6 +8,11 @@
             <div class="container">
                 <p class="skill-kicker">My skills</p>
                 <h1>Skill</h1>
+                <a href="{% url 'main:create_skill' %}"
+                    class="button add-button">
+                    <span aria-hidden="true">+</span>
+                    Add Skill
+                </a>
 
                 <div class="skill-grid">
                     {% for skill in skill_list %}
@@ -31,6 +36,15 @@
                             {% else %}
                                 <p class="skill-certif">Certification unavailable</p>
                             {% endif %}
+                            <div class="card-actions">
+                                <div class="actions">
+                                    <a href="{% url 'main:update_skill' skill.id %}"
+                                        class="button update-button">
+                                        Update Skill
+                                    </a>
+                                    {% include "components/skill_delete_modal.html" with skill=skill %}
+                                </div>
+                            </div>
                         </article>
 
                     {% empty %}
