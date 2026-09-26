@@ -1,4 +1,5 @@
 import uuid
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -72,6 +73,9 @@ class Projects(models.Model):
     status = models.CharField(max_length=20, choices=PROJECT_STATUS)
     type = models.CharField(max_length=20, choices=PROJECT_TYPE)
     link = models.URLField(blank=True, null=True)
+    starred_by = models.ManyToManyField(
+        User, related_name="starred_projects", blank=True
+    )
 
     def __str__(self):
         return self.title

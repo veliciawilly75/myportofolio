@@ -17,6 +17,10 @@ from main.views import (
    delete_project,
    delete_skill,
    delete_experience,
+   register,
+   login_user,
+   logout_user,
+   toggle_star,
 )
 
 app_name = "main"
@@ -38,4 +42,8 @@ urlpatterns = [
     path("projects/<uuid:project_id>/delete/",delete_project,name="delete_project"),
     path("skill/<uuid:skill_id>/delete/",delete_skill,name="delete_skill"),
     path("experience/<uuid:experience_id>/delete/",delete_experience,name="delete_experience"),
+    path("register/", register, name="register"),
+    path("login/", login_user, name="login"),
+    path("logout/", logout_user, name="logout"),
+    path("projects/<uuid:project_id>/star/",toggle_star,name="toggle_star"),
 ]
