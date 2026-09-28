@@ -18,14 +18,14 @@
 }
 
 body {
-    font-family: -apple-system, "Andale Mono", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, Andale Mono, Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
     background-color: var(--paper);
     line-height: 1.6;
 }
 
 h1, .brand {
-    font-family: "Canela Deck", -apple-system, sans-serif;
+    font-family: -apple-system, Canela Deck, Cochin, sans-serif;
 }
 
 .container {
@@ -69,6 +69,10 @@ h1, .brand {
     color: var(--ink);
     text-decoration: none;
     font-size: 0.95rem;
+}
+
+.nav-user {
+    color: var(--accent-dark);
 }
 
 /* Section Hero with CSS Grid */
@@ -190,7 +194,7 @@ h1, .brand {
     background-color: var(--line);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .hero-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -204,8 +208,11 @@ h1, .brand {
             "brand"
             "href";
     }
+
     .site-header nav {
         margin-top: 1rem;
+        overflow: auto;
+        /*white-space: nowrap;*/
     }
 
     .hero-photo {
@@ -514,6 +521,7 @@ h1, .brand {
 .delete-modal__content h2 {
     margin: 0 0 0.75rem;
     font-family:
+        "Andale Mono"
         "Space Grotesk",
         -apple-system,
         sans-serif;

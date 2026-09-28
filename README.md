@@ -16,7 +16,9 @@ Pertanyaan Reflektif
 
 2. Tantangan tata letak yang saya temukan adalah menentukan letak yang pas bagi masing-masing section. Setelah menambahkan section-section baru (skills, experience, projects) di section hero-details, layout dari website menjadi tidak seimbang. Kolom sebelah kiri jadi memiliki lebih banyak konten daripada kolom sebelah kanan yang hanya berisi foto. Akhirnya, saya melakukan penyesuaian tata letak. Dalam proses penyesuaian, saya memindahkan beberapa elemen ke section lain dan membuat section baru. Saya juga mengubah grid-template-areas pada file css agar dapat menyusun section-section yang ada sesuai keinginan saya. Selain itu, ketika website dibuka dengan tampilan mobile, pengaturan tata letak yang sudah rapi di tampilan desktop jadi berantakan. Misalnya, margin yang membuat section skills memiliki jarak yang cukup dari foto pada tampilan desktop, mengakibatkan adanya jarak yang besar antara section skills dan section lainnya pada tampilan mobile sehingga harus di-override. Saat mengubah ke tampilan mobile, layout berubah menjadi satu kolom saja. Elemen paling penting (hero-identity dan hero-photo) saya letakkan paling atas agar menjadi hal pertama yang dilihat ketika website dibuka, diikuti oleh hero-info. Sisanya (skills, experience, dan projects) saya letakkan paling bawah karena baru akan dilihat setelah elemen-elemen lain dilihat.
 
-3. Karena website merupakan static website, semua informasi yang ada di dalamnya sudah dituliskan langsung di file html. Hal ini berarti, jika saya ingin mengubah informasi yang ada di website, saya harus mengubah kode html saya dan melakukan push lagi ke pws. Hal ini tentunya tidak efisien. Andai website saya bersifat dynamic, saya hanya perlu mengubah informasi yang ada di database untuk mengubah informasi yang ada di website. Selain itu, saya juga ingin agar tampilan website saya bisa berubah sesuai dengan keinginan pengunjung website. Saya ingin menambahkan toggle untuk mengganti tampilan website ke dark mode pada tugas-tugas berikutnya.\n\nSaya tidak menggunakan AI untuk tugas ini.
+3. Karena website merupakan static website, semua informasi yang ada di dalamnya sudah dituliskan langsung di file html. Hal ini berarti, jika saya ingin mengubah informasi yang ada di website, saya harus mengubah kode html saya dan melakukan push lagi ke pws. Hal ini tentunya tidak efisien. Andai website saya bersifat dynamic, saya hanya perlu mengubah informasi yang ada di database untuk mengubah informasi yang ada di website. Selain itu, saya juga ingin agar tampilan website saya bisa berubah sesuai dengan keinginan pengunjung website. Saya ingin menambahkan toggle untuk mengganti tampilan website ke dark mode pada tugas-tugas berikutnya. 
+
+Saya tidak menggunakan AI untuk tugas ini.
 Berikut masalah yang muncul dan cara saya mengatasinya:
 Saya sempat bingung dengan tata letak (grid) dari proyek ini. Saya ingin membuat foto berada di sudut kanan atas halaman, bukan di tengah. Akan tetapi, saat saya mengubah properti align menjadi top pada file css, box shadow di bawah foto memanjang sampai ke bagian bawah halaman. Setelah membaca kembali dokumen tutorial 01 dengan saksama, saya mulai memahami tata letak dari proyek ini. Saya sadar bahwa section hero-photo menempati dua baris pada kolom yang sama. Hal ini menyebabkan pemanjangan box shadow tadi. Akhirnya, saya mengubah grid-template-areas untuk membuat section hero-photo jadi lebih kecil.
 
@@ -75,3 +77,19 @@ Resources:
 1. https://www.w3schools.com/django/django_update_record.php 
 2. https://stackoverflow.com/questions/42012115/how-to-initialize-a-django-form-with-values-from-a-model
 3. https://docs.djangoproject.com/en/6.1/ref/forms/widgets/#django.forms.Widget.attrs 
+
+
+### Tugas 4
+Perubahan dari Tutorial 4 dan Tugas 4:
+1. Menambahkan fitur autentifikasi dan otorisasi untuk semua model.
+2. Menerapkan toggle star untuk model Projects dan Experience.
+3. Memperbaiki tampilan rusak/tidak rapi saat ukuran window kecil dengan membuat horizontal scroll menu untuk navigation bar.
+
+AI Disclosure
+Saya tidak menggunakan AI untuk tugas ini. Karena saya hanya menerapkan apa yang sudah dipelajari pada Tutorial 3, saya tidak menemukan masalah yang berarti dalam proses pengerjaan tugas ini. 
+
+Troubleshooting
+Saat saya mengecilkan ukuran window, saya menemukan bahwa tampilan web, khususnya bagian navigation bar, jadi tidak rapi. Sebagian dari navigation bar jadi berada di luar layar sehingga tidak terlihat oleh pengguna. Saya mencari solusi untuk masalah ini dengan mengunjungi web w3schools dan melihat-lihat tipe menu bar yang bisa saya buat seperti apa. Saya memilih implementasi yang paling mudah dan tidak memerlukan banyak perubahan kode, yaitu horizontal scroll menu. Saya menetapkan properti overflow sebagai auto, yang akan otomatis menambahkan scrollbar jika diperlukan (saat ada yang keluar layar). Saya juga menetapkan properti whitespace sebagai nowrap agar semua kata ada di baris yang sama.
+
+Resources
+1. https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp

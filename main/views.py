@@ -158,6 +158,7 @@ def show_projects(request):
         "name": "Velicia Willy",
         "projects_list": projects,
         "title_query": title_query,
+        "is_editor": is_editor(request),
     }
     return render(request, "projects.html", context)
 
@@ -205,7 +206,7 @@ def delete_project(request, project_id):
 
 @login_required(login_url="/login/")
 def update_project(request, project_id):
-    if not request.user.is_superuser:
+    if not (request.user.is_superuser or is_editor(request)):
             raise PermissionDenied
         
     project = get_object_or_404(Projects, id=project_id)
@@ -225,7 +226,7 @@ def update_project(request, project_id):
 
 @login_required(login_url="/login/")
 def update_skill(request, skill_id):
-    if not request.user.is_superuser:
+    if not (request.user.is_superuser or is_editor(request)):
             raise PermissionDenied
         
     skill = get_object_or_404(Skill, id=skill_id)
@@ -245,7 +246,7 @@ def update_skill(request, skill_id):
 
 @login_required(login_url="/login/")
 def update_experience(request, experience_id):
-    if not request.user.is_superuser:
+    if not (request.user.is_superuser or is_editor(request)):
             raise PermissionDenied
         
     experience = get_object_or_404(Experience, id=experience_id)
@@ -312,3 +313,18 @@ def toggle_star(request, project_id):
             project.starred_by.add(request.user)
 
     return redirect("main:show_projects")
+
+@login_required(login_url="/login/")
+def experience_toggle_star(request, experience_id):
+    experience = get_object_or_404(Experience, id=experience_id)
+
+    if request.method == "POST":
+        if request.user in experience.starred_by.all():
+            experience.starred_by.remove(request.user)
+        else:
+            experience.starred_by.add(request.user)
+
+    return redirect("main:show_experience")
+
+def is_editor(request):
+     return request.user.groups.filter(name='Editor').exists()

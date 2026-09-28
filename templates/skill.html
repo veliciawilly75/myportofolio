@@ -40,7 +40,7 @@
                             {% endif %}
                             <div class="card-actions">
                                 <div class="actions">
-                                    {% if user.is_superuser %}
+                                    {% if user.is_superuser or is_editor %}
                                         <a href="{% url 'main:update_skill' skill.id %}"
                                             class="button update-button">
                                             Update Skill
