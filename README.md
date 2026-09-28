@@ -20,6 +20,7 @@ Pertanyaan Reflektif
 
 Saya tidak menggunakan AI untuk tugas ini.
 Berikut masalah yang muncul dan cara saya mengatasinya:
+
 Saya sempat bingung dengan tata letak (grid) dari proyek ini. Saya ingin membuat foto berada di sudut kanan atas halaman, bukan di tengah. Akan tetapi, saat saya mengubah properti align menjadi top pada file css, box shadow di bawah foto memanjang sampai ke bagian bawah halaman. Setelah membaca kembali dokumen tutorial 01 dengan saksama, saya mulai memahami tata letak dari proyek ini. Saya sadar bahwa section hero-photo menempati dua baris pada kolom yang sama. Hal ini menyebabkan pemanjangan box shadow tadi. Akhirnya, saya mengubah grid-template-areas untuk membuat section hero-photo jadi lebih kecil.
 
 Resources yang saya gunakan untuk tugas ini:
@@ -46,6 +47,7 @@ Pertanyaan Reflektif
 3. Fungsi makemigrations berperan untuk mendata perubahan apa saja yang terjadi pada model dan melaporkannya kepada kita. Fungsi ini sama sekali tidak mengubah database kita. Sementara itu, fungsi migrate menerapkan perubahan yang ada pada database kita. Contohnya, saya menjalankan kedua perintah tersebut saat menambahkan models baru, yaitu Experience, Skill, dan Projects.
 
 AI Disclosure
+
 Saya tidak menggunakan AI untuk tugas ini. Saya tidak menemukan banyak masalah saat mengerjakan tugas ini karena saya hanya menerapkan hal-hal yang saya pelajari pada tutorial 2.
 
 Resources yang saya gunakan untuk tugas ini:
@@ -71,6 +73,7 @@ Pertanyaan reflektif:
 3. Pertama, client mengirimkan request untuk menampilkan halaman berisi data. Data tersebut kita ambil dari database kita dalam bentuk stream of Bytes (di-serialize). Setelah diterima oleh views, data di-deserialize ke dalam format JSON. Data JSON ini di-parse ke dalam bentuk objek dari model kita. Akhirnya, views mengembalikan halaman html yang di-request client beserta contextnya yang berisi data-data objek. Serialization mengubah sebuah objek ke dalam bentuk stream of Bytes. Hal ini memungkinkan data yang dibuat oleh suatu bahasa pemrograman untuk diproses oleh bahasa pemrograman lainnya. 
 
 AI Disclosure
+
 Saya tidak menggunakan AI untuk tugas ini. Karena saya hanya menerapkan apa yang sudah dipelajari pada Tutorial 3, saya tidak menemukan masalah yang berarti dalam proses pengerjaan tugas ini. Akan tetapi, saya mengalami kesulitan saat ingin mengimplementasi update data (tidak dibahas pada tutorial). Implementasi update data mirip dengan create data, tapi, saya kebingungan akan cara membuat form otomatis terisi dengan data asli dari objek yang ingin kita update. Akhirnya, saya membaca artikel dari w3schools dan forum Stack Overflow untuk memahami cara melakukan update data JSON dengan menggunakan forms serta dokumentasi django untuk memahami widgets. Saya menemukan bahwa menambahkan argumen instance pada ProjectForm() menyelesaikan masalah tersebut.
 
 Resources:
@@ -86,10 +89,14 @@ Perubahan dari Tutorial 4 dan Tugas 4:
 3. Memperbaiki tampilan rusak/tidak rapi saat ukuran window kecil dengan membuat horizontal scroll menu untuk navigation bar.
 
 AI Disclosure
+
 Saya tidak menggunakan AI untuk tugas ini. Karena saya hanya menerapkan apa yang sudah dipelajari pada Tutorial 3, saya tidak menemukan masalah yang berarti dalam proses pengerjaan tugas ini. 
 
 Troubleshooting
+
 Saat saya mengecilkan ukuran window, saya menemukan bahwa tampilan web, khususnya bagian navigation bar, jadi tidak rapi. Sebagian dari navigation bar jadi berada di luar layar sehingga tidak terlihat oleh pengguna. Saya mencari solusi untuk masalah ini dengan mengunjungi web w3schools dan melihat-lihat tipe menu bar yang bisa saya buat seperti apa. Saya memilih implementasi yang paling mudah dan tidak memerlukan banyak perubahan kode, yaitu horizontal scroll menu. Saya menetapkan properti overflow sebagai auto, yang akan otomatis menambahkan scrollbar jika diperlukan (saat ada yang keluar layar). Saya juga menetapkan properti whitespace sebagai nowrap agar semua kata ada di baris yang sama.
 
 Resources
 1. https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp
+2. https://www.w3schools.com/css/css_overflow.asp
+3. https://www.w3schools.com/CSSref/pr_text_white-space.php
