@@ -100,3 +100,13 @@ Resources
 1. https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp
 2. https://www.w3schools.com/css/css_overflow.asp
 3. https://www.w3schools.com/CSSref/pr_text_white-space.php
+
+
+### Tutorial 5
+Perubahan:
+1. Mengimplementasikan toast
+2. Menerapkan debouncing pada search bar halaman Projects
+3. Menampilkan data Projects dengan AJAX. Fungsi get_projects_json diperbarui agar dapat merakit JSON secara manual. Fungsi show_projects disederhanakan karena tidak lagi perlu mengirimkan data projects. Mengubah projects.html agar menjadi template untuk AJAX. Menambahkan script AJAX inline untuk merakit sendiri data JSON yang dikirimkan fungsi pada views.
+4. Mengubah penambahan proyek baru yang tadinya melalui halaman lain, jadi melalui modal.
+5. Mengubah mekanisme penambahan data proyek dengan AJAX agar tidak terjadi perpindahan halaman ataupun reload browser saat pengguna men-submit form create projects.
+6. Mengimplementasikan perlindungan website dari XSS.
