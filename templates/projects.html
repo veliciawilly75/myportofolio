@@ -11,7 +11,7 @@
                     <h1>Projects</h1>
                     {% if user.is_superuser %}
                         <button type="button"
-                                class="button project-add-button"
+                                class="button add-button"
                                 popovertarget="add-project-modal">
                             <span aria-hidden="true">+</span>
                             Add Project
@@ -19,13 +19,13 @@
                     {% endif %}
                 </div>
 
-                <form id="project-search-form" class="project-search">
+                <form id="project-search-form" class="search">
                     <input type="search"
                            id="search-input"
                            name="title"
                            value="{{ title_query }}"
                            placeholder="Search based on project name"
-                           class="project-search__input"
+                           class="search__input"
                            aria-label="Search based on project name">
                     <button type="submit" class="button">Search</button>
                 </form>
@@ -140,8 +140,8 @@
             <h2>${escapeHtml(project.title)}</h2>
             <p class="experience-description">${escapeHtml(project.description)}</p>
             <p class="projects-link">${link}</p>
-            <div class="project-card-actions">
-                <div class="project-actions">
+            <div class="card-actions">
+                <div class="actions">
                     
                     <form method="post" action="${starUrl}" class="star-form">
                         {% csrf_token %}

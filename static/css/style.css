@@ -413,26 +413,14 @@ h1, .brand {
 .empty-projects-state {
     color: var(--text-muted);
 }
- /* add-button berlaku untuk skill.html, experience.html, dan projects.html */
-.add-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    margin-bottom: 1.5rem;
-}
 
-.add-button span {
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
-.project-search {
+.search {
     display: flex;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
 }
 
-.project-search__input {
+.search__input {
     width: 100%;
     min-width: 0;
     padding: 0.7rem;
@@ -443,7 +431,7 @@ h1, .brand {
     font: inherit;
 }
 
-.project-search__input:focus {
+.search__input:focus {
     outline: 2px solid var(--accent);
     border-color: var(--accent);
 }
@@ -453,7 +441,7 @@ h1, .brand {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     margin-top: 1rem;
 }
 
@@ -559,16 +547,16 @@ h1, .brand {
         flex-direction: column;
     }
 
-    .project-add-button {
+    .add-button {
         width: 100%;
         justify-content: center;
     }
 
-    .project-search {
+    .search {
         flex-direction: column;
     }
 
-    .project-search .button {
+    .search .button {
         width: 100%;
     }
 
@@ -657,6 +645,11 @@ h1, .brand {
     background: var(--ink);
 }
 
+/* add-button berlaku untuk skill.html, experience.html, dan projects.html */
+.add-button {
+    margin-bottom: 1.5rem;
+}
+
 .star-form {
     display: inline;
 }
@@ -728,7 +721,7 @@ h1, .brand {
 .toast-error { border-left: 4px solid #b42318; }
 .toast-normal { border-left: 4px solid var(--accent); }
 
-.project-form-modal {
+.form-modal {
     display: none;
     position: fixed;
     inset: 0;
@@ -745,11 +738,11 @@ h1, .brand {
     justify-content: center;
 }
 
-.project-form-modal:popover-open {
+.form-modal:popover-open {
     display: flex;
 }
 
-.project-form-modal__backdrop {
+.form-modal__backdrop {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -760,7 +753,7 @@ h1, .brand {
     cursor: default;
 }
 
-.project-form-modal__content {
+.form-modal__content {
     position: relative;
     z-index: 1;
     width: min(100%, 640px);
@@ -773,13 +766,13 @@ h1, .brand {
     box-shadow: 0 1rem 3rem rgba(28, 25, 23, 0.22);
 }
 
-.project-form-modal__content h2 {
+.form-modal__content h2 {
     margin: 0 2.5rem 1.25rem 0;
     font-family: "Space Grotesk", -apple-system, sans-serif;
     font-size: 1.5rem;
 }
 
-.project-form-modal__close {
+.form-modal__close {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -792,7 +785,7 @@ h1, .brand {
     cursor: pointer;
 }
 
-.project-form-modal__actions {
+.form-modal__actions {
     display: flex;
     justify-content: flex-end;
     gap: 0.75rem;
@@ -800,23 +793,23 @@ h1, .brand {
 }
 
 @media (max-width: 600px) {
-    .project-form-modal {
+    .form-modal {
         align-items: flex-end;
         padding: 0;
     }
 
-    .project-form-modal__content {
+    .form-modal__content {
         width: 100%;
         max-height: 90vh;
         padding: 1.25rem;
         border-radius: var(--radius) var(--radius) 0 0;
     }
 
-    .project-form-modal__actions {
+    .form-modal__actions {
         flex-direction: column-reverse;
     }
 
-    .project-form-modal__actions .button {
+    .form-modal__actions .button {
         width: 100%;
         text-align: center;
     }

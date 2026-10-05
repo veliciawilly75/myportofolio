@@ -12,7 +12,6 @@ class ExperienceForm(ModelForm):
             "title",
             "description",
             "category",
-            "thumbnail",
             "started_at",
             "ended_at",
         ]
@@ -21,7 +20,6 @@ class ExperienceForm(ModelForm):
             "title": "Experience name",
             "description": "Experience description",
             "category": "Experience category",
-            "thumbnail": "Experience thumbnail",
             "started_at": "Experience started at",
             "ended_at": "Experience ended at",
         }
@@ -45,18 +43,22 @@ class ExperienceForm(ModelForm):
                     "maxlength": 255,
                 }
             ),
-            "thumbnail": URLInput(
-                attrs={
-                    "placeholder": "https://drive.google.com/thumbnail?id=...&sz=w1000",
-                }
-            ),
             "started_at": DateTimeInput(),
             "ended_at": DateTimeInput(),
         }
+    def clean_title(self):
+        title = strip_tags(self.cleaned_data["title"]).strip()
+        if not title:
+            raise ValidationError("Experience name can't only contain HTML tags.")
+        return title
+    
+    def clean_description(self):
+        return strip_tags(self.cleaned_data["description"]).strip()
 
 class SkillForm(ModelForm):
     class Meta:
         model = Skill
+
         fields = [
             "title",
             "level",
@@ -88,6 +90,15 @@ class SkillForm(ModelForm):
                 }
             ),
         }
+
+    def clean_title(self):
+        title = strip_tags(self.cleaned_data["title"]).strip()
+        if not title:
+            raise ValidationError("Skill name can't only contain HTML tags.")
+        return title
+    
+    def clean_level(self):
+        return strip_tags(self.cleaned_data["level"]).strip()
 
 class ProjectForm(ModelForm):
     class Meta:
@@ -146,9 +157,6 @@ class ProjectForm(ModelForm):
         if not title:
             raise ValidationError("Project name can't only contain HTML tags.")
         return title
-
-    def clean_tech_stack(self):
-        return strip_tags(self.cleaned_data["tech_stack"]).strip()
 
     def clean_description(self):
         return strip_tags(self.cleaned_data["description"]).strip()

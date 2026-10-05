@@ -4,6 +4,17 @@ NPM : 2506657384
 
 Kelas : PBP D
 
+Link menuju...
+[Tugas 1](#tugas-1)
+[Tutorial 2](#tutorial-2)
+[Tugas 2](#tugas-2)
+[Tutorial 3](#tutorial-3)
+[Tugas 3](#tugas-3)
+[Tugas 4](#tugas-4)
+[Tutorial 5](#tutorial-5)
+[Tugas 5](#tugas-5)
+
+
 ### Tugas 1
 Perubahan
 1. Mengubah color palette website
@@ -28,7 +39,7 @@ Resources yang saya gunakan untuk tugas ini:
 2. Aplikasi Font Book di Mac -> untuk mencari font yang sesuai keinginan saya.
 ###
 
-### Tutorial 02
+### Tutorial 2
 Perubahan yang saya buat (selain yang diinstruksikan):
 1. Menghapus section experience dari halaman profil dengan menghapus section tersebut dari index.html dan style.css.
 ###
@@ -110,3 +121,24 @@ Perubahan:
 4. Mengubah penambahan proyek baru yang tadinya melalui halaman lain, jadi melalui modal.
 5. Mengubah mekanisme penambahan data proyek dengan AJAX agar tidak terjadi perpindahan halaman ataupun reload browser saat pengguna men-submit form create projects.
 6. Mengimplementasikan perlindungan website dari XSS.
+
+
+### Tugas 5
+Perubahan:
+1. Menambahkan search bar dengan debouncing pada halaman Skill.
+2. Menampilkan data Skill dan Experience dengan AJAX. Fungsi-fungsi views yang berkaitan berubah seperti pada Tutorial 5.
+3. Mengubah penambahan skill dan experience baru jadi melalui modal.
+4. Mengubah mekanisme penambahan data skill dan experience dengan AJAX agar tidak terjadi perpindahan halaman ataupun reload browser saat pengguna men-submit form create projects.
+5. Mengimplementasikan perlindungan website dari XSS untuk model Skill dan Experience.
+
+Pertanyaan Reflektif
+1. Kita menggunakan mekanisme search bar yang langsung menampilkan hasil pencarian sehingga pengguna tidak perlu menekan tombol search. Debouncing atau penundaan sebelum pemanggilan search diperlukan agar halaman tidak terus-menerus mengirim request GET setiap kali pengguna mengetikkan sesuatu di search bar. Dengan teknik debouncing, halaman baru akan menampilkan hasil pencarian setelah sekian waktu pengguna berhenti mengetik (sekian waktu tanpa event input pada search bar).
+2. Keyword await digunakan agar eksekusi kode setelah fetch() menunggu hingga fetch() selesai dieksekusi. Tanpa await, selagi menunggu selesainya eksekusi fetch() kode-kode berikutnya akan terus dieksekusi, dengan instruksi fetch() berlanjut di background. Hal ini harus dihindari jika misalnya, kode setelah fetch() adalah kode yang menampilkan data yang di-fetch. Jika kode penampilan data dieksekusi sebelum fetch() selesai dieksekusi, data yang ditampilkan bisa jadi tidak lengkap.
+3. Serangan XSS adalah serangan di mana penyerang menyisipkan elemen executable (<script></script>) pada halaman web kita. Penyerang bisa menyisipkan elemen executable dari input form yang kemudian dibaca oleh halaman web ketika ingin menampilkan atau memroses data input sehingga isi dari script dieksekusi. Data yang ditampilkan melalui AJAX/JavaScript lebih rentan terhadap serangan XSS daripada data yang ditampilkan melalui html langsung karena tidak ada lagi Django yang melakukan auto-escaping html. Hal ini berbahaya untuk keamanan data dan fungsionalitas halaman kita sehingga harus kita mitigasi. Kita dapat memitigasinya dengan memastikan data yang ingin kita tampilkan pada halaman tidak memiliki tag html dengan melakukan input handling pada forms dan melakukan escaping secara manual pada kode AJAX.
+
+AI Disclosure
+
+Saya tidak menggunakan AI untuk tugas ini. Saya mempelajari isi dari Tutorial 5 dengan baik. Kesulitan yang saya alami disebabkan karena typo saat menyalin kode pada Tutorial 5 dan mengadaptasinya sesuai dengan kebutuhan website saya. Kode yang disalin cukup panjang sehingga ada beberapa bagian yang tidak teradaptasi dengan baik. Misalnya, ```id="project-form"``` pada skill_form_modal.html lupa saya ganti menjadi ```id="skill=form"```, padahal pada skill.html, const skillForm memfilter berdasarkan id "skill-form" sehingga isi form tidak muncul karena objek form dianggap null. Saya menggunakan tab console pada fitur Inspect pada web untuk melacak letak typo saya di mana.
+
+Resources
+1. Halaman Tutorial 5 PBP
