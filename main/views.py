@@ -196,6 +196,7 @@ def show_projects(request):
         "name": "Velicia Willy",
         "title_query": title_query,
         "form": ProjectForm(),
+        "is_editor": request.user.groups.filter(name='Editor').exists(),
     }
     return render(request, "projects.html", context)
 
@@ -364,7 +365,7 @@ def experience_toggle_star(request, experience_id):
     return redirect("main:show_experience")
 
 def is_editor(request):
-     return request.user.groups.filter(name='Editor').exists()
+    return request.user.groups.filter(name='Editor').exists()
 
 @require_POST
 def create_project_ajax(request):
