@@ -94,3 +94,32 @@ class ExperienceSerializer(serializers.ModelSerializer):
             mutable_data['ended_at'] = None
             
         return super().to_internal_value(mutable_data)
+
+class SkillSerializer(serializers.ModelSerializer):
+    prioritize = serializers.ReadOnlyField()
+    highlight = serializers.ReadOnlyField()
+    certif_available = serializers.ReadOnlyField()
+
+    class Meta:
+        model = Skill
+        fields = [
+            "id", "title", "level", "certification",
+            "prioritize", "highlight", "certif_available",
+        ]
+        read_only_fields = ["id", "prioritize", "highlight", "certif_available"] 
+
+    def validate_title(self, value):
+        value = strip_tags(value).strip()
+        if not value:
+            raise serializers.ValidationError("Title cannot be empty.")
+        return value
+
+    def to_internal_value(self, data):
+        # Frontend FormData is often immutable, so we make a mutable copy
+        mutable_data = data.copy()
+            
+        # If the frontend sent an empty string, convert it to None
+        if mutable_data.get('certification') == '':
+            mutable_data['certification'] = None
+                
+        return super().to_internal_value(mutable_data)

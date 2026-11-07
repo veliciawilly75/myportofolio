@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 from main.models import Projects, Experience, Skill
 from main.permissions import IsPortfolioOwnerOrReadOnly, IsPortfolioOwnerOrEditorOrReadOnly
-from main.serializers import ProjectSerializer, ExperienceSerializer
+from main.serializers import ProjectSerializer, ExperienceSerializer, SkillSerializer
 
 
 @api_view(["GET", "HEAD", "POST"])
@@ -46,6 +46,25 @@ def experience_list(request):
         return Response(serializer.data)
 
     serializer = ExperienceSerializer(data=request.data, context={"request": request})
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(["GET", "HEAD", "POST"])
+@authentication_classes([SessionAuthentication])
+@permission_classes([IsPortfolioOwnerOrEditorOrReadOnly])
+def skill_list(request):
+    if request.method in ("GET", "HEAD"):
+        skills = Skill.objects.all().order_by("title", "id")
+        title = request.query_params.get("title", "").strip()
+        if title:
+            skills = skills.filter(title__icontains=title)
+        serializer = SkillSerializer(
+            skills, many=True, context={"request": request},
+        )
+        return Response(serializer.data)
+
+    serializer = SkillSerializer(data=request.data, context={"request": request})
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -90,6 +109,29 @@ def experience_detail(request, experience_id):
 
     serializer = ExperienceSerializer(
         experience, data=request.data, partial=request.method == "PATCH",
+        context={"request": request},
+    )
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response(serializer.data)
+
+@api_view(["GET", "HEAD", "PUT", "PATCH", "DELETE"])
+@authentication_classes([SessionAuthentication])
+@permission_classes([IsPortfolioOwnerOrEditorOrReadOnly])
+def skill_detail(request, skill_id):
+    skill = get_object_or_404(
+        Skill.objects.all(), pk=skill_id,
+    )
+    if request.method in ("GET", "HEAD"):
+        serializer = SkillSerializer(skill, context={"request": request})
+        return Response(serializer.data)
+
+    if request.method == "DELETE":
+        skill.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    serializer = SkillSerializer(
+        skill, data=request.data, partial=request.method == "PATCH",
         context={"request": request},
     )
     serializer.is_valid(raise_exception=True)
