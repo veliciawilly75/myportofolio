@@ -123,14 +123,6 @@
                 data-type="${escapeHtml(project.type)}"
                 data-link="${escapeHtml(project.link)}">Update</button>` : '';
 
-        const updateUrl = "{% url 'main:update_project' '00000000-0000-0000-0000-000000000000' %}"
-            .replace('00000000-0000-0000-0000-000000000000', project.id);
-        const updateHtml = (IS_SUPERUSER || project.is_editor)
-            ? `<a href="${updateUrl}" class="button update-button">
-                    Update Project
-            </a>`
-            : '';
-
         const star = IS_AUTHENTICATED
             ? `<button type="button" class="button button-star${project.is_starred ? ' is-starred' : ''}"
                 data-action="star" data-id="${escapeHtml(project.id)}"
@@ -228,9 +220,7 @@
     function closeProjectModal() {
         document.getElementById("add-project-modal").hidePopover();
     }
-
-    const CREATE_PROJECT_ENDPOINT = "{% url 'main:create_project_ajax' %}";
-
+    
     // Membaca nilai cookie, digunakan untuk mengambil token CSRF
     function getCookie(name) {
         const prefix = `${name}=`;
@@ -278,7 +268,7 @@
             showToast('Success', 'Project sucessfully updated.', 'success');
             await fetchProjects(searchInput.value.trim());
         } catch (error) {
-            showToast('Could not create project', error.message, 'error');
+            showToast('Could not update project', error.message, 'error');
         } finally {
             button.disabled = false;
         }

@@ -176,6 +176,7 @@ def show_experience(request):
         "name": "Velicia Willy",
         "title_query": title_query,
         "form": ExperienceForm(),
+        "is_editor": request.user.groups.filter(name='Editor').exists(),
     }
     return render(request, "experience.html", context)
 
@@ -186,6 +187,7 @@ def show_skill(request):
         "name": "Velicia Willy",
         "title_query": title_query,
         "form": SkillForm(),
+        "is_editor": request.user.groups.filter(name='Editor').exists(),
     }
     return render(request, "skill.html", context)
 

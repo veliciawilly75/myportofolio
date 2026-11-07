@@ -28,7 +28,9 @@ class Experience(models.Model):
     
     @property
     def is_ongoing(self):
-        return self.ended_at is None
+        if self.ended_at is None:
+            return True
+        return self.ended_at > timezone.now()
 
 class Skill(models.Model):
     SKILL_LEVEL = [

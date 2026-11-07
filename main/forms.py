@@ -27,13 +27,13 @@ class ExperienceForm(ModelForm):
         widgets = {
             "title": TextInput(
                 attrs={
-                    "placeholder": "Portfolio Website",
+                    "placeholder": "Internship",
                     "maxlength": 255,
                 }
             ),
             "description": Textarea(
                 attrs={
-                    "placeholder": "Describe your project",
+                    "placeholder": "Describe your experience",
                     "rows": 3,
                 }
             ),
@@ -74,7 +74,7 @@ class SkillForm(ModelForm):
         widgets = {
             "title": TextInput(
                 attrs={
-                    "placeholder": "Portfolio Website",
+                    "placeholder": "Django",
                     "maxlength": 255,
                 }
             ),
