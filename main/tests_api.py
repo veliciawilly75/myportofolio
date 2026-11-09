@@ -108,7 +108,7 @@ class ProjectAPITest(APITestCase):
         self.assertFalse(response.data["is_solo"])
         self.assertTrue(response.data["link_available"])
 
-    def test_staff_and_editor_can_manage_tutorial_projects(self):
+    def test_staff_and_editor_can_manage_projects(self):
         self.visitor.is_staff = True
         self.visitor.save()
         self.visitor.groups.add(Group.objects.create(name="Editor"))
@@ -116,7 +116,7 @@ class ProjectAPITest(APITestCase):
         response = self.client.patch(self.detail_url, {"title": "Changed"}, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_staff_and_editor_cannot_delete_tutorial_projects(self):
+    def test_staff_and_editor_cannot_delete_projects(self):
         self.visitor.is_staff = True
         self.visitor.save()
         self.visitor.groups.add(Group.objects.create(name="Editor"))

@@ -69,7 +69,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
     def validate(self, data):
         started_at = data.get('started_at', getattr(self.instance, 'started_at', None))
         ended_at = data.get('ended_at', getattr(self.instance, 'ended_at', None))
-        if ended_at != None and ended_at < started_at:
+        if ended_at != None and ended_at <= started_at:
             raise serializers.ValidationError("End datetime must be after Start datetime.")
         return data
 
